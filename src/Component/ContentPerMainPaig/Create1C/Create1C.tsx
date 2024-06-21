@@ -47,6 +47,9 @@ const Create1C:FC= () => {
     const [userJobtitelCreate1c, setUserJobtitelCreate1c] = useState('')
     const [userJobArrowCreate1c, setUserJobArrowCreate1c] = useState('')
 
+    const [fileElement, setFileElement] = useState<File | null>(null)
+    const [base64File, setBase64File] = useState('')  
+
     const [modalEmpty, setModalEmpty] = useState(false)
     const [modalSuccess, setModalSuccess] = useState(false)
 
@@ -96,10 +99,7 @@ const Create1C:FC= () => {
             }
         }
     }, [store.isAuth])
-
    
-    console.log(store.aa6Success);    
-    
     const handleSetTaskName = (newState: string) => {
         setTaskName(newState)
     }
@@ -169,6 +169,12 @@ const Create1C:FC= () => {
 
     const handleChangeButtonModalSuccess = (newState: boolean) => {
         setModalSuccess(newState)
+    }
+
+    const hadnleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.files) {
+            setFileElement(event.target.files[0])
+        }
     }
  
     const InterfaceObj = {
@@ -391,6 +397,28 @@ const Create1C:FC= () => {
             return
         }
 
+        if (fileElement) {
+            const reader = new FileReader()
+            
+            reader.readAsDataURL(fileElement)
+            reader.onloadend = () => {
+                const base64Str = reader.result?.toString().split(',')[1]
+
+                console.log(base64Str);                
+
+                if (base64Str) {
+                    setBase64File(base64Str)
+                    console.log(base64File);                    
+                }
+
+                if (base64Str) {
+                    setBase64File(base64Str)
+                    console.log(base64File);                    
+                }
+            }
+
+        }
+
         let taskObj = [
             {
                 ТипЗадачи             : "Задачи 1С",
@@ -405,6 +433,7 @@ const Create1C:FC= () => {
                 Срочность             : taskUrgency,
                 СрочностьПодробно     : `Срочность задачи подробно: ${taskUrgencyDescr}`,
                 Описание              : taskComment,
+                file                  : base64File,
 
                 ПользовательУчеткиАА6 : userNameCreate1c,
                 КомпанияУчеткиАА6     : userCompanyCreate1c,
@@ -420,6 +449,8 @@ const Create1C:FC= () => {
             taskObj[0].Срочность = "Средняя"
             taskObj[0].СрочностьПодробно = "Срочность задачи подробно: Создание новой учетки"
         }
+
+        console.log(taskObj);        
 
         // console.log(taskObj);
 
@@ -589,6 +620,15 @@ const Create1C:FC= () => {
 
                         <TaskComment InterfaceObj={InterfaceObj}/>
 
+                        <Form.Group controlId="formFile" className="mb-3">
+                            <Form.Label>Добавьте скриншот ошибки:</Form.Label>
+                            <Form.Control 
+                                type="file"
+                                onChange={hadnleFileChange}
+                                // value={fileElement} 
+                            />
+                        </Form.Group>
+
                         {modalEmpty ? (
                             <div className='ModalEmpty_HeaderBlock'>
                                 <ModalEmptyForm InterfaceObj={InterfaceObjModal} />
@@ -608,7 +648,6 @@ const Create1C:FC= () => {
                         <div className='VR_FlexBtnCreate'>
                             <Button onClick={() => {
                                 setNewTask()
-                                // window.location.reload()
                             }} className='mb-5 mt-3 ps-5 pe-5 f-end' variant="outline-dark">Создать</Button>     
                         </div>     
                     </Form>

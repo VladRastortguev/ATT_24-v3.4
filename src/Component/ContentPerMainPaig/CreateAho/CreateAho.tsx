@@ -221,11 +221,12 @@ const CreateAho:FC = () => {
                         <TaskInfluence InterfaceObj={InterfaceObj} />   
                         <TaskUrgency InterfaceObj={InterfaceObj} />
                         <TaskComment InterfaceObj={InterfaceObj}/>
-
-                    <Button onClick={() => {
-                        setNewTask()
-                        window.location.reload()                                   
-                    }} className='mb-5 mt-3 ps-5 pe-5' variant="outline-dark">Создать</Button>      
+                    
+                    <div className='VR_FlexBtnCreate'>
+                        <Button onClick={() => {
+                            setNewTask()
+                        }} className='mb-5 mt-3 ps-5 pe-5' variant="outline-dark">Создать</Button>      
+                    </div>
                 </Form>
             </Container>
         </>
