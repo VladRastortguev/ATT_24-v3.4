@@ -104,8 +104,6 @@ export default class Store {
         try {
             const response = await UserService.getAA6Users(email)
 
-            console.log(response);            
-
             if (response.data[0]) {
                 this.setAa6Success(true)
                 // console.log(true);                
