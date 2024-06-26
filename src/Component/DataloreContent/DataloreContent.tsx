@@ -21,7 +21,9 @@ const DataloreContent:FC = () => {
 
                 const res = await UserService.getDataloreItil() 
                 
-                console.log(store.isLoading);
+                // console.log(store.isLoading);
+
+                console.log(res);                
             
                 setDataloreArr(res.data)
             } catch (e) {
@@ -71,13 +73,13 @@ const DataloreContent:FC = () => {
                                                             <p className='mb-3 ms-2'>{item.loreDescr}</p>                                                    
                                                         
                                                             <div>
-                                                                {/* <a className='ms-2' target='_top' href={`data:application/pdf;base64,${item.lorePng}`}>Просмотреть</a> */}
+                                                                <a className='ms-2' target='_top' href={`data:application/pdf;base64,${item.lorePng}`}>Просмотреть</a>
                                                                 <a className='ms-3' download='file.pdf' href={`data:application/pdf;base64,${item.lorePng}`}>Скачать</a>
                                                             </div>
                                                         </div>                                                    
                                                     ) : (
                                                         <>
-                                                            {/* <a className='ms-2' target='_blank' href={`Datalorepdf/${item.lorePng}`}>Просмотреть</a> */}
+                                                            <a className='ms-2' target='_blank' href={`Datalorepdf/${item.lorePng}`}>Просмотреть</a>
                                                             <a className='ms-3' download href={`data:application/pdf;base64,${item.lorePng}`}>Скачать</a>                                                        
                                                         </>
                                                     )}                                            
