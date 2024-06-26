@@ -509,8 +509,10 @@ const Create1C:FC= () => {
                                 onChange={(e) => setTaskService(e.target.value)}>
                                 
                                 <option></option>
-                                <option value="Доработка 1С">Доработка 1С</option>
-                                <option value="Разработка 1С">Разработка 1С</option>
+                                <option value="Доработка систем 1С">Доработка систем 1С</option>
+                                <option value="Корректировка прав для сотрудника в 1С">Корректировка прав для сотрудника в 1С</option>
+                                <option value="Сбой при подключении к 1С">Сбой при подключении к 1С</option>
+                                <option value="Сброс/установка пароля 1С">Сброс/установка пароля 1С</option>
 
                                 {store.aa6Success ? (
                                     <option value="Создание учетной записи АА6">Создание учетной записи АА6</option>
