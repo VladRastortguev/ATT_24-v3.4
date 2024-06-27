@@ -93,13 +93,15 @@ html {
 }
 
 .VR_Email_Input,
-    .VR_Password_Input {
+    .VR_Password_Input,
+    .VR_RPassword_input {
         opacity: 60%;
         /* margin-top: 60px; */
 }
 
 .VR_Email_Input:hover,
-    .VR_Password_Input:hover {
+    .VR_Password_Input:hover,
+    .VR_RPassword_input:hover {
         transition: 0.5s;
         opacity: 80%;
     }
