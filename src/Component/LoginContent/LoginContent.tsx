@@ -13,13 +13,15 @@ import { Context } from '../..';
 import UserService from '../../services/UserService';
 
 const LoginContent:FC = () => {
-    const [singIn, setSingIn] = useState(true)
+    const [singIn, setSingIn] = useState(false)
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [email, setEmail]                         = useState('')
+    const [password, setPassword]                   = useState('')
 
-    const [emailReg, setEmailReg] = useState('')
-    const [passwordReg, setPasswordReg] = useState('')
+    const [emailReg, setEmailReg]                   = useState('')
+    const [passwordReg, setPasswordReg]             = useState('')
+    const [repeatPasswordReg, setRepeatPasswordReg] = useState('')
+    const [stylePassword, setStylePassword]         = useState(false)
 
     const { store } = useContext(Context)
 
@@ -78,6 +80,15 @@ const LoginContent:FC = () => {
             navigate('/')
         } else {
             alert('Неправильный логин или пароль!')
+        }
+    }
+
+    function validationRepeatPassword() {
+        if (passwordReg !== repeatPasswordReg) {
+            alert('Пароли не совпадают')
+            setStylePassword(false)
+        } else {
+            setStylePassword(true)
         }
     }
 
@@ -217,7 +228,7 @@ const LoginContent:FC = () => {
                                     <TextField 
                                         className='VR_Email_Input' 
                                         id="standard-basic" 
-                                        label="Email" 
+                                        label="Почта" 
                                         variant="standard"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)} 
@@ -226,7 +237,7 @@ const LoginContent:FC = () => {
                                     <TextField 
                                         className='VR_Password_Input mt-3'
                                         id='standart-basic' 
-                                        label='Password' 
+                                        label='Пароль' 
                                         variant='standard' 
                                         type='password'
                                         value={password}
@@ -249,7 +260,7 @@ const LoginContent:FC = () => {
                                     <TextField 
                                         className='VR_Email_Input' 
                                         id="standard-basic" 
-                                        label="Email" 
+                                        label="Корпоративная почта" 
                                         variant="standard"
                                         value={emailReg}
                                         onChange={(e) => setEmailReg(e.target.value)} 
@@ -258,20 +269,42 @@ const LoginContent:FC = () => {
                                     <TextField 
                                         className='VR_Password_Input mt-3'
                                         id='standart-basic' 
-                                        label='Password' 
+                                        label='Придумайте пароль' 
                                         variant='standard' 
                                         type='password'
                                         value={passwordReg}
                                         onChange={(e) => setPasswordReg(e.target.value)}                                 
                                     />
+
+
+                                    <TextField 
+                                        className='VR_RPassword_input mt-3'
+                                        id='standart-basic'
+                                        label='Повторите пароль'                                        
+                                        type='password'
+                                        variant='standard'
+                                        value={repeatPasswordReg}
+                                        onChange={(e) => setRepeatPasswordReg(e.target.value)}
+                                        onBlur={() => validationRepeatPassword()} 
+                                    />
                                 </ThemeProvider>
 
-                                <div className='VR_CreateBtn'>
-                                    <Button 
-                                        onClick={() => checkNormalizeReg()} 
-                                        variant="outline-light" 
-                                        className='px-5 mb-4 VR_Button_Login'>Регистрация</Button>
-                                </div>                                            
+                                {stylePassword ? (
+                                    <div className='VR_CreateBtn'>
+                                        <Button 
+                                            onClick={() => checkNormalizeReg()} 
+                                            variant="outline-light" 
+                                            className='px-5 mb-4 VR_Button_Login'>Регистрация</Button>
+                                    </div>   
+                                ) : (
+                                    <div className='VR_CreateBtn'>
+                                        <Button 
+                                            onClick={() => checkNormalizeReg()} 
+                                            variant="outline-light" 
+                                            className='px-5 mb-4 VR_Button_Login'
+                                            disabled>Регистрация</Button>
+                                    </div>   
+                                )}                                         
                             </div>
                         </div>
                     )}
