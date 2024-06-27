@@ -168,7 +168,7 @@ const CreateTex:FC = () => {
             СрочностьПодробно     : `Срочность задачи подробно: ${taskUrgencyDescr}`,
             Описание              : taskComment
         }
-    ]
+    ]    
 
     store.setLoading(true)
 
@@ -186,9 +186,9 @@ const CreateTex:FC = () => {
     setTaskService("")
 
     handleSetTaskName("")
-    handleSetUserName("")    
-    handleSetUserEmail("") 
-    handleSetTaskOrganization("") 
+    // handleSetUserName("")    
+    // handleSetUserEmail("") 
+    // handleSetTaskOrganization("") 
     handleSetTaskInfluence("") 
     handleSetTaskInfluenceDescr("")
     handleSetTaskUrgency("") 
