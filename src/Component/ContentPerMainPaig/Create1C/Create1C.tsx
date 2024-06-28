@@ -33,6 +33,8 @@ const Create1C:FC= () => {
     const [userEmail, setUserEmail] = useState('')
     const [taskOrganization, setTaskOrganization] = useState('')
 
+    const [feedback, setFeedback] = useState('')
+
     const [taskInfluence, setTaskInfluence] = useState('')
     const [taskInfluenceDescr, setTaskInfluenceDescr] = useState('')
     const [taskPodInfluence, setTaskPodInfluence] = useState('')
@@ -370,7 +372,8 @@ const Create1C:FC= () => {
         if (
             !taskService.trim()        ||
             !taskName.trim()           ||            
-            !taskComment.trim()
+            !taskComment.trim()        ||
+            !feedback.trim()
         ) {
             setModalEmpty(true)
             return
@@ -434,6 +437,7 @@ const Create1C:FC= () => {
                 СрочностьПодробно     : `Срочность задачи подробно: ${taskUrgencyDescr}`,
                 Описание              : taskComment,
                 file                  : base64File,
+                ОбратнаяСвязь         : feedback,
 
                 ПользовательУчеткиАА6 : userNameCreate1c,
                 КомпанияУчеткиАА6     : userCompanyCreate1c,
@@ -477,6 +481,7 @@ const Create1C:FC= () => {
         setTaskUrgency("")
         setTaskUrgencyDescr("")
         setTaskPodInfluence("")
+        setFeedback("")
 
         setUserNameCreate1c("")
         setUserCompanyCreate1c("")
@@ -591,7 +596,18 @@ const Create1C:FC= () => {
                                         onChange={(e) => handleSetTaskInfluenceDescr(e.target.value)}/>
                                 </Form.Group>
 
+                                
+
                                 <TaskUrgency InterfaceObj={InterfaceObj} />
+
+                                <Form.Group className='mb-3 ControlTextarea1'>
+                                    <Form.Label>Укажите Ваш номер телефона или другой способ связи с Вами</Form.Label>
+                                    <Form.Control
+                                        className='VR_Feedback'
+                                        as="input"
+                                        value={feedback}
+                                        onChange={(e) => setFeedback(e.target.value)} />
+                                </Form.Group>
                             </>
                         )}
 
@@ -602,7 +618,7 @@ const Create1C:FC= () => {
                                 <UserEmailCreate1c InterfaceObj={InterfaceObjCreate1c} />
                                 <UserArrowJod InterfaceObj={InterfaceObjCreate1c} />
                                 {/* <UserJobtitelCreate1c InterfaceObj={InterfaceObjCreate1c} />                         */}
-                            
+
                                 <Form.Group className="mb-3" controlId="ControlSelect3">
                                     <Form.Label>Должность сотрудника которому необходима учетная запись:</Form.Label>
                                     <Form.Select 
