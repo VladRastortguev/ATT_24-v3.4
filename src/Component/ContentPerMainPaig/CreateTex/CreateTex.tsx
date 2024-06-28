@@ -31,6 +31,8 @@ const CreateTex:FC = () => {
     const [taskComment, setTaskComment] = useState('')
     const [taskPodInfluence, setTaskPodInfluence] = useState('')
 
+    const [feedback, setFeedback] = useState('')
+
     const [modalEmpty, setModalEmpty] = useState(false)
     const [modalSuccess, setModalSuccess] = useState(false)
 
@@ -148,7 +150,8 @@ const CreateTex:FC = () => {
         !taskInfluenceDescr.trim() ||
         !taskUrgency.trim()        ||
         !taskUrgencyDescr.trim()   ||
-        !taskComment.trim()
+        !taskComment.trim()        ||
+        !feedback.trim()
     ) {
         setModalEmpty(true)
         return
@@ -166,7 +169,8 @@ const CreateTex:FC = () => {
             ВлияниеЗадачиПодробно : `Влияние задачи подробно: ${taskInfluenceDescr}`,
             Срочность             : taskUrgency,
             СрочностьПодробно     : `Срочность задачи подробно: ${taskUrgencyDescr}`,
-            Описание              : taskComment
+            Описание              : taskComment,
+            ОбратнаяСвязь         : feedback
         }
     ]    
 
@@ -194,6 +198,7 @@ const CreateTex:FC = () => {
     handleSetTaskUrgency("") 
     handleSetTaskUrgencyDescr("")
     handleSetTaskComment("")
+    setFeedback("")
 
     setModalSuccess(true)
   }
@@ -451,6 +456,16 @@ const CreateTex:FC = () => {
 
                         {/* <TaskInfluence InterfaceObj={InterfaceObj} />    */}
                         <TaskUrgency InterfaceObj={InterfaceObj} />
+
+                        <Form.Group className='mb-3' controlId='ControlTextarea1'>
+                            <Form.Label>Укажите Ваш номер телефона или другой способ связи с Вами</Form.Label>
+                            <Form.Control 
+                                className='VR_Feedback'
+                                as="input"
+                                value={feedback}
+                                onChange={(e) => setFeedback(e.target.value)}/>
+                        </Form.Group>
+
                         <TaskComment InterfaceObj={InterfaceObj}/>
                     
                         {modalEmpty ? (
