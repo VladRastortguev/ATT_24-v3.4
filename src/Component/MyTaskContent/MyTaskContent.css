@@ -22,3 +22,265 @@
     font-weight: 700;
     font-size: 60px;
 }
+
+.VR_SettingsForm_MyTasks {
+    position: fixed;
+
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 70%;
+
+    display: inline-block;
+
+    /* border: 5px solid black; */
+    border-left: 3px solid black;
+
+    background: white;
+
+    overflow-y: hidden;
+}
+
+.VR_AllHeaderSettings_MyTasks {
+    display: inline-block;
+
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+}
+
+.VR_TaskListHeader_MyTasks {
+    display: flex;
+
+    list-style-type: none;
+
+    margin: 10px 0 10px 0;
+
+    padding-left: 0;
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid black;
+}
+
+.VR_CloseSettingsForm_MyTasks {
+    width: 100%;
+    height: 10%;
+
+    position: absolute;
+
+    bottom: 0;
+    right: 0;
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+.VR_CloseSettingsForm_MyTasks button {
+    margin-left: 2%;
+}
+
+.VR_TitleSettings_MyTasks {
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 10%;
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+}
+
+.VR_MainSettings_MyTasks {
+    display: flex;
+
+    width: 100%;
+    height: 80%;
+
+    margin-top: 17.6%;
+}
+
+.VR_AllHeaderTaskList_MyTasks {
+    list-style: none;
+
+    display: inline-block;
+
+    width: 100%;
+    height: 100%;
+
+
+}
+
+.VR_TaskList_MyTasks {
+    display: flex;
+    padding-left: 0;
+}
+
+.VR_TaskListSuccess_MyTasks:hover {
+    background: #00FF001A;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.VR_TaskListPause_MyTasks:hover {
+    background: #FFFF0028;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.VR_TaskListOnProcess:hover {
+    background: #0000FF1A;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.VR_TaskListSogl_MyTasks:hover {
+    background: #8080801A;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+
+.VR_TaskList_MyTasks li{
+    margin: 0;
+    padding: 5px 0 5px 0;
+}
+
+
+.VR_TaskList_MyTasks li {
+    list-style-type: none;
+}
+
+.VR_PauseIcon_TaskList {
+    color: rgb(227, 227, 23);
+}
+
+
+
+
+
+
+
+
+
+
+.VR_TaskStatusHeader_MyTasks {
+    width: 8%;
+    text-align: center;
+
+    border-right: 1px solid black;
+}
+
+.VR_TaskStatus_MyTasks {
+    width: 8%;
+
+    text-align: center;
+    
+    border-right: 1px solid black;
+}
+
+.VR_TaskNumberHeader_MyTasks {
+    width: 8%;
+    text-align: center;
+
+    border-right: 1px solid black;
+}
+
+.VR_TaskNumber_MyTasks {
+    width: 8%;
+
+    text-align: center;
+
+    border-right: 1px solid black;
+}
+
+.VR_TaskDateCompletionHeader_MyTasks {
+    width: 12.5%;
+    text-align: center;
+
+    border-right: 1px solid black;
+}
+
+.VR_TaskDate_MyTasks {
+    width: 12.5%;
+
+    text-align: center;
+
+    border-right: 1px solid black;
+}
+
+.VR_TaskExecutorHeader_MyTasks {
+    width: 14.5%;
+    text-align: center;
+
+    border-right: 1px solid black;
+}
+
+.VR_TaskExecutor_MyTasks {
+    width: 14.5%;
+
+    text-align: center;
+
+    border-right: 1px solid black;
+}
+
+.VR_TaskInitiatorHeader_MyTasks {
+    width: 14.5%;
+    text-align: center;
+
+    border-right: 1px solid black;
+}
+
+.VR_TaskInitiator_MyTasks {
+    width: 14.5%;
+
+    text-align: center;
+
+    border-right: 1px solid black;
+}
+
+.VR_TaskOrganizationClientHeader_MyTasks {
+    width: 12.5%;
+    text-align: center;
+
+    border-right: 1px solid black;
+}
+
+.VR_TaskOrganizationClient_MyTasks {
+    width: 12.5%;
+
+    text-align: center;
+
+    border-right: 1px solid black;
+}
+
+.VR_TaskPriorityHeader_MyTasks {
+    width: 12.5%;
+    text-align: center;
+
+    border-right: 1px solid black;
+}
+
+.VR_TasksPryority_MyTasks {
+    width: 12.5%;
+
+    text-align: center;
+
+    border-right: 1px solid black;
+}
+
+.VR_TaskName_MyTaksks {
+    width: 16%;
+    text-align: center;
+}
+
+.VR_targetTaskName_MyTasks {
+    width: 16%;
+    text-align: center;
+}
