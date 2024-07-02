@@ -147,7 +147,7 @@ const MyTaskContent:FC<MyTaskContentInterface> = ({FunctionObj}) => {
                             <li className='VR_TaskInitiator_MyTasks' key={`initiator-${index}`}>{`
                                 ${String(item.Initiator).split(' ')[0]} 
                                 ${String(String(item.Initiator).split(' ')[1]).substring(0, 1)}.
-                                ${String(String(item.Initiator).split(' ')[1]).substring(0, 1)}.
+                                ${String(String(item.Initiator).split(' ')[2    ]).substring(0, 1)}.
                             `}</li>
 
 
