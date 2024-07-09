@@ -372,8 +372,7 @@ const Create1C:FC= () => {
         if (
             !taskService.trim()        ||
             !taskName.trim()           ||            
-            !taskComment.trim()        ||
-            !feedback.trim()
+            !taskComment.trim()                    
         ) {
             setModalEmpty(true)
             return
@@ -394,7 +393,8 @@ const Create1C:FC= () => {
             // !taskInfluence.trim()      ||
             !taskInfluenceDescr.trim() ||
             !taskUrgency.trim()        ||
-            !taskUrgencyDescr.trim()
+            !taskUrgencyDescr.trim()   ||
+            !feedback.trim()
         ) {
             setModalEmpty(true)
             return
