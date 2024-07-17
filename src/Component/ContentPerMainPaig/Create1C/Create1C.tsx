@@ -491,11 +491,11 @@ const Create1C:FC= () => {
     }
 
     function checkAa6Success(option:string) {
-        if (option !== 'Создание учетной записи АА6') {
-            return
-        } else {
+        if (option == 'Создание учетной записи АА6' && store.aa6Success) {
             alert('Вы не можете поставить данную задачу! \nОбратитесь к руководителю');            
             setTaskService('')
+        } else {
+            return
         }
     }
 
