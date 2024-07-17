@@ -490,6 +490,15 @@ const Create1C:FC= () => {
         setUserJobArrowCreate1c("")        
     }
 
+    function checkAa6Success(option:string) {
+        if (option !== 'Создание учетной записи АА6') {
+            return
+        } else {
+            alert('Вы не можете поставить данную задачу! \nОбратитесь к руководителю');            
+            setTaskService('')
+        }
+    }
+
     if (store.isLoading) {
         return (
             <Container>
@@ -511,7 +520,10 @@ const Create1C:FC= () => {
                                 className='VR_TaskName' 
                                 aria-label="Ваша задача:"
                                 value={taskService}
-                                onChange={(e) => setTaskService(e.target.value)}>
+                                onChange={(e) => {
+                                    setTaskService(e.target.value)
+                                    checkAa6Success(e.target.value)
+                                }}>
                                 
                                 <option></option>
                                 <option value="Доработка систем 1С">Доработка систем 1С</option>
@@ -520,12 +532,12 @@ const Create1C:FC= () => {
                                 <option value="Сброс/установка пароля 1С">Сброс/установка пароля 1С</option>
                                 <option value="Установка 1с">Установка 1с</option>
 
-                                {store.aa6Success ? (
+                                {/* {store.aa6Success ? ( */}
                                     <option value="Создание учетной записи АА6">Создание учетной записи АА6</option>
-                                ) : (
-                                    <>                                    
-                                    </>
-                                )}
+                                {/* ) : ( */}
+                                    {/* <>                                     */}
+                                    {/* </> */}
+                                {/* )} */}
                             </Form.Select>
                         </Form.Group>     
 
