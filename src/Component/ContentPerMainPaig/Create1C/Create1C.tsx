@@ -34,6 +34,7 @@ const Create1C:FC= () => {
     const [taskOrganization, setTaskOrganization] = useState('')
 
     const [feedback, setFeedback] = useState('')
+    const [database, setDatabase] = useState('')
 
     const [taskInfluence, setTaskInfluence] = useState('')
     const [taskInfluenceDescr, setTaskInfluenceDescr] = useState('')
@@ -438,6 +439,7 @@ const Create1C:FC= () => {
                 Описание              : taskComment,
                 file                  : base64File,
                 ОбратнаяСвязь         : feedback,
+                БазаДоработок         : database,
 
                 ПользовательУчеткиАА6 : userNameCreate1c,
                 КомпанияУчеткиАА6     : userCompanyCreate1c,
@@ -620,6 +622,15 @@ const Create1C:FC= () => {
                                         as="input"
                                         value={feedback}
                                         onChange={(e) => setFeedback(e.target.value)} />
+                                </Form.Group>
+
+                                <Form.Group className='mb-3 ControlTextarea1'>
+                                    <Form.Label>Укажите базу для доработок</Form.Label>
+                                    <Form.Control
+                                        className='VR_Database'
+                                        as="input"
+                                        value={database}
+                                        onChange={(e) => setDatabase(e.target.value)} />
                                 </Form.Group>
                             </>
                         )}
