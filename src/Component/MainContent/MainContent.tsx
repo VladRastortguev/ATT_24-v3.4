@@ -109,7 +109,7 @@ const MainContent:FC = () => {
                 <TabsList>
                     <Tab value={1}>Задачи 1С</Tab>
                     <Tab value={2}>Задачи Тех.Поддержке</Tab>
-                    <Tab value={3}>Задачи АХО</Tab>
+                    <Tab value={3}>Закупки</Tab>
                     <Tab value={4}>Анонимное письмо</Tab>
                 </TabsList>
   
