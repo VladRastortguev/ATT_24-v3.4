@@ -10,6 +10,7 @@ import TaskUrgency from '../PodComponent/TaskUrgency'
 import { Context } from '../../..'
 import AuthService from '../../../services/AuthService'
 import TaskComment from '../PodComponent/TaskComment'
+import { API_URL } from '../../../http'
 
 const CreateAho:FC = () => {
     const [taskService, setTaskService] = useState('')
@@ -25,34 +26,36 @@ const CreateAho:FC = () => {
     const [taskComment, setTaskComment] = useState('')
     const [taskPodInfleunce, setTaskPodInfluence] = useState('')
 
+    const [file, setFile] = useState(null)
+ 
     const { store } = useContext(Context)
 
     useEffect(() => {
-      const fetchData = async () => {
-          try {
-              store.setLoading(true)
-              await store.checkAuth()
-          } catch (e) {
-              alert(e)
-          } finally {
-              store.setLoading(false)
-          }
-      }
+        const fetchData = async () => {
+            try {
+                store.setLoading(true)
+                await store.checkAuth()
+            } catch (e) {
+                alert(e)
+            } finally {
+                store.setLoading(false)
+            }
+        }
 
-      fetchData()
-  }, [])
+        fetchData()
+    }, [])
   
-  useEffect(() => {
-      if (store.isAuth) {
-          try {
-              setUserName(String(localStorage.getItem('UserName')))
-              setUserEmail(String(localStorage.getItem('userEmail')))
-              setTaskOrganization(String(localStorage.getItem('company')))
-          } catch (e) {
-              alert(e)                
-          }
-      }
-  }, [store.isAuth])
+    useEffect(() => {
+        if (store.isAuth) {
+            try {
+                setUserName(String(localStorage.getItem('UserName')))
+                setUserEmail(String(localStorage.getItem('userEmail')))
+                setTaskOrganization(String(localStorage.getItem('company')))
+            } catch (e) {
+                alert(e)                
+            }
+        }
+    }, [store.isAuth])
     
     const handleSetTaskName = (newState: string) => {
         setTaskName(newState)
@@ -94,87 +97,109 @@ const CreateAho:FC = () => {
         setTaskPodInfluence(newState)
     }
 
-    const InterfaceObj = {
-      changeTaskName: handleSetTaskName,
-      changeUserName: handleSetUserName,
-      changeUserEmail: handleSetUserEmail,
-      changeTaskOrganization: handleSetTaskOrganization,
-      changeTaskInfluence: handleSetTaskInfluence,
-      changeTaskInfluenceDescr: handleSetTaskInfluenceDescr,
-      changeTaskUrgency: handleSetTaskUrgency,
-      changeTaskUrgencyDescr: handleSetTaskUrgencyDescr,
-      changeTaskComment: handleSetTaskComment,
-      changeTaskPodInfluence: handleSetTaskPodInfluence,
-      taskName: taskName,
-      userName: userName,
-      userEmail: userEmail,
-      taskOrganization: taskOrganization,
-      taskInfluence: taskInfluence,
-      taskInfluenceDescr: taskInfluenceDescr,
-      taskUrgency: taskUrgency,
-      taskUrgencyDescr: taskUrgencyDescr,
-      taskComment: taskComment,
-      taskPodInfluence: taskPodInfleunce
+    const hadnleFileChange = (event:any) => {
+        setFile(event.target.files[0])
     }
 
-  async function setNewTask() {
-    if (
-        !taskService.trim()        ||
-        !taskName.trim()           ||
-        !userName.trim()           ||
-        !userEmail.trim()          ||
-        !taskOrganization.trim()   ||
-        !taskInfluence.trim()      ||
-        !taskInfluenceDescr.trim() ||
-        !taskUrgency.trim()        ||
-        !taskUrgencyDescr.trim()   ||
-        !taskComment.trim()
-    ) {
-        alert('Заполните все поля!')
-        return
-    }
+    const handleSubmit = async (event:any) => {
+        event.preventDefault()
 
-    let taskObj = [
-        {
-            ТипЗадачи             : "Задача АХО",
-            ПодтипЗадачи          : taskService,
-            Наименование          : taskName,
-            ИмяПользователя       : userName,
-            email                 : userEmail,
-            КомпанияЗаказчик      : taskOrganization,
-            ВлияниеЗадачи         : taskInfluence,
-            ВлияниеЗадачиПодробно : taskInfluenceDescr,
-            Срочность             : taskUrgency,
-            СрочностьПодробно     : taskUrgencyDescr,
-            Описание              : taskComment
+        if (!file) {
+            alert('Выберите файл!')
+            return
         }
-    ]
+        
+        const formData = new FormData()
+        formData.append('file', file)
 
-    store.setLoading(true)
+        try {
 
-    try {
-        const res = AuthService.setNewTask(taskObj, String(localStorage.getItem('userEmail')))
-
-        console.log(res);
-    } catch (e) {
-        console.log(e);
-    } finally {
-        store.setLoading(false)
+        } catch(e) {
+            const responce = await fetch(`API_URL`)
+        }
     }
 
-    alert("Задача создана!")
+    const InterfaceObj = {
+        changeTaskName: handleSetTaskName,
+        changeUserName: handleSetUserName,
+        changeUserEmail: handleSetUserEmail,
+        changeTaskOrganization: handleSetTaskOrganization,
+        changeTaskInfluence: handleSetTaskInfluence,
+        changeTaskInfluenceDescr: handleSetTaskInfluenceDescr,
+        changeTaskUrgency: handleSetTaskUrgency,
+        changeTaskUrgencyDescr: handleSetTaskUrgencyDescr,
+        changeTaskComment: handleSetTaskComment,
+        changeTaskPodInfluence: handleSetTaskPodInfluence,
+        taskName: taskName,
+        userName: userName,
+        userEmail: userEmail,
+        taskOrganization: taskOrganization,
+        taskInfluence: taskInfluence,
+        taskInfluenceDescr: taskInfluenceDescr,
+        taskUrgency: taskUrgency,
+        taskUrgencyDescr: taskUrgencyDescr,
+        taskComment: taskComment,
+        taskPodInfluence: taskPodInfleunce
+    }
 
-    setTaskService("")
+    async function setNewTask() {
+        if (
+            !taskService.trim()        ||
+            !taskName.trim()           ||
+            !userName.trim()           ||
+            !userEmail.trim()          ||
+            !taskOrganization.trim()   ||
+            !taskInfluence.trim()      ||
+            !taskInfluenceDescr.trim() ||
+            !taskUrgency.trim()        ||
+            !taskUrgencyDescr.trim()   ||
+            !taskComment.trim()
+        ) {
+            alert('Заполните все поля!')
+            return
+        }
 
-    handleSetTaskName("")
-    handleSetUserName("")
-    handleSetUserEmail("")                        
-    handleSetTaskOrganization("")
-    handleSetTaskInfluence("")
-    handleSetTaskInfluenceDescr("")
-    handleSetTaskUrgency("")
-    handleSetTaskUrgencyDescr("")
-    handleSetTaskComment("") 
+        let taskObj = [
+            {
+                ТипЗадачи             : "Задача АХО",
+                ПодтипЗадачи          : taskService,
+                Наименование          : taskName,
+                ИмяПользователя       : userName,
+                email                 : userEmail,
+                КомпанияЗаказчик      : taskOrganization,
+                ВлияниеЗадачи         : taskInfluence,
+                ВлияниеЗадачиПодробно : taskInfluenceDescr,
+                Срочность             : taskUrgency,
+                СрочностьПодробно     : taskUrgencyDescr,
+                Описание              : taskComment
+            }
+        ]
+
+        store.setLoading(true)
+
+        try {
+            const res = AuthService.setNewTask(taskObj, String(localStorage.getItem('userEmail')))
+
+            console.log(res);
+        } catch (e) {
+            console.log(e);
+        } finally {
+            store.setLoading(false)
+        }
+
+        alert("Задача создана!")
+
+        setTaskService("")
+
+        handleSetTaskName("")
+        // handleSetUserName("")
+        // handleSetUserEmail("")                        
+        // handleSetTaskOrganization("")
+        handleSetTaskInfluence("")
+        handleSetTaskInfluenceDescr("")
+        handleSetTaskUrgency("")
+        handleSetTaskUrgencyDescr("")
+        handleSetTaskComment("") 
     }
 
     if (store.isLoading) {
@@ -207,24 +232,29 @@ const CreateAho:FC = () => {
                 </Form.Group>  
 
                 <Form>
-                        <TaskName InterfaceObj={InterfaceObj} />
+                    <TaskName InterfaceObj={InterfaceObj} />
                         
-                        {store.isAuth ? (
-                            null
-                        ) : (
-                            <>
-                                <UserName InterfaceObj={InterfaceObj} />
-                                <UserEmail InterfaceObj={InterfaceObj} /> 
-                                <TaskOrganization InterfaceObj={InterfaceObj} />
-                            </>
-                        )}
-                        <TaskInfluence InterfaceObj={InterfaceObj} />   
-                        <TaskUrgency InterfaceObj={InterfaceObj} />
-                        <TaskComment InterfaceObj={InterfaceObj}/>
+                    {store.isAuth ? (
+                        null
+                    ) : (
+                        <>
+                            <UserName InterfaceObj={InterfaceObj} />
+                            <UserEmail InterfaceObj={InterfaceObj} /> 
+                            <TaskOrganization InterfaceObj={InterfaceObj} />
+                        </>
+                    )}
+                    <TaskInfluence InterfaceObj={InterfaceObj} />   
+                    <TaskUrgency InterfaceObj={InterfaceObj} />
+                    <TaskComment InterfaceObj={InterfaceObj}/>
+
+                    <form id='uploadForm' encType='multipart/form-data'>
+                        <input type="file" id="fileInput" name="file" />
+                    </form>
                     
                     <div className='VR_FlexBtnCreate'>
                         <Button onClick={() => {
                             setNewTask()
+                            // VR_UploadFile()
                         }} className='mb-5 mt-3 ps-5 pe-5' variant="outline-dark">Создать</Button>      
                     </div>
                 </Form>
