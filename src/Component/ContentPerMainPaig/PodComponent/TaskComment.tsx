@@ -12,6 +12,7 @@ const TaskComment:FC<TaskInterface> = ({InterfaceObj}) => {
                 className='VR_TaskName' 
                 as="textarea" 
                 rows={4}
+                placeholder='Детальное описание...'
                 value={InterfaceObj.taskComment}
                 onChange={(e) => InterfaceObj.changeTaskComment?.(e.target.value)}/>
         </Form.Group>
