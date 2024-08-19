@@ -54,7 +54,7 @@ const LoginContent:FC = () => {
             if (String(email) == item.email) {
                 localStorage.setItem('UserName', item.name)
                 localStorage.setItem('UserUID', item.uid)
-                return                    
+                return    
             }
         })        
     }

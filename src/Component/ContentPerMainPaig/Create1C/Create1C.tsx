@@ -495,7 +495,10 @@ const Create1C:FC= () => {
     }
 
     function checkAa6Success(option:string) {
-        if (option == 'Создание учетной записи АА6' && !store.aa6Success) {
+        if (option == 'Создание учетной записи АА6' && !store.aa6Success ||
+            option == 'Создание учетной записи АА4' && !store.aa6Success ||
+            option == 'Создание учетной записи ЗУП' && !store.aa6Success
+        ) {
             alert('Вы не можете поставить данную задачу! \nОбратитесь к руководителю');            
             setTaskService('')
         } else {
@@ -538,6 +541,8 @@ const Create1C:FC= () => {
 
                                 {/* {store.aa6Success ? ( */}
                                     <option value="Создание учетной записи АА6">Создание учетной записи АА6</option>
+                                    <option value="Создание учетной записи АА4">Создание учетной записи АА4</option>
+                                    <option value="Создание учетной записи ЗУП">Создание учетной записи ЗУП</option>
                                 {/* ) : ( */}
                                     {/* <>                                     */}
                                     {/* </> */}
