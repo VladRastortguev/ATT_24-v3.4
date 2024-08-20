@@ -381,8 +381,12 @@ const Create1C:FC= () => {
             return
         }
         
-        if (taskService == 'Создание учетной записи АА6') {
-            if (
+        if (
+            taskService == 'Создание учетной записи АА6' || 
+            taskService == 'Создание учетной записи АА4' ||
+            taskService == 'Создание учетной записи ЗУП') {
+
+                if (
                 !userNameCreate1c.trim()     ||
                 !userCompanyCreate1c.trim()  ||
                 !userEmailCreate1c.trim()    ||
@@ -495,10 +499,9 @@ const Create1C:FC= () => {
     }
 
     function checkAa6Success(option:string) {
-        if (option == 'Создание учетной записи АА6' && !store.aa6Success ||
-            option == 'Создание учетной записи АА4' && !store.aa6Success ||
-            option == 'Создание учетной записи ЗУП' && !store.aa6Success
-        ) {
+        console.log(store.aa6Success);        
+
+        if (option == 'Создание учетной записи АА6' && !store.aa6Success ) {
             alert('Вы не можете поставить данную задачу! \nОбратитесь к руководителю');            
             setTaskService('')
         } else {
@@ -537,16 +540,18 @@ const Create1C:FC= () => {
                                 <option value="Корректировка прав для сотрудника в 1С">Корректировка прав для сотрудника в 1С</option>
                                 <option value="Сбой при подключении к 1С">Сбой при подключении к 1С</option>
                                 <option value="Сброс/установка пароля 1С">Сброс/установка пароля 1С</option>
-                                <option value="Установка 1с">Установка 1с</option>
+                                <option value="Установка 1с">Установка 1с</option>                                
+                                <option value="Создание учетной записи АА6">Создание учетной записи АА6</option>
+                                
+                                {localStorage.getItem('company') == 'Алтын Тулпар' ? (
+                                    <>
+                                        <option value="Создание учетной записи АА4">Создание учетной записи АА4</option>
+                                        <option value="Создание учетной записи ЗУП">Создание учетной записи ЗУП</option>                                    
+                                    </>
+                                ) : (
+                                    <></>
+                                )}
 
-                                {/* {store.aa6Success ? ( */}
-                                    <option value="Создание учетной записи АА6">Создание учетной записи АА6</option>
-                                    <option value="Создание учетной записи АА4">Создание учетной записи АА4</option>
-                                    <option value="Создание учетной записи ЗУП">Создание учетной записи ЗУП</option>
-                                {/* ) : ( */}
-                                    {/* <>                                     */}
-                                    {/* </> */}
-                                {/* )} */}
                             </Form.Select>
                         </Form.Group>     
 
@@ -562,7 +567,9 @@ const Create1C:FC= () => {
                             </>
                         )}
 
-                        {taskService == 'Создание учетной записи АА6' ? (
+                        {taskService == 'Создание учетной записи АА6' ||
+                         taskService == 'Создание учетной записи АА4' ||
+                         taskService == 'Создание учетной записи ЗУП' ? (
                             null
                         ) : (
                             <>
@@ -642,7 +649,9 @@ const Create1C:FC= () => {
                             </>
                         )}
 
-                        {taskService == 'Создание учетной записи АА6' ? (
+                        {taskService == 'Создание учетной записи АА6' ||
+                         taskService == 'Создание учетной записи АА4'  ||
+                         taskService == 'Создание учетной записи ЗУП'  ? (
                             <>
                                 <UserNameCreate1c InterfaceObj={InterfaceObjCreate1c} />
                                 <UserCompanyCreate1c InterfaceObj={InterfaceObjCreate1c}/>  
