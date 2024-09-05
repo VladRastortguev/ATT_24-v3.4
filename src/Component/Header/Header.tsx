@@ -47,6 +47,10 @@ const Header:FC<HeaderInterface> = ({InterfaceObj}) => {
                 return (
                     <BackBtn />
                 )
+            case 'AccessAA6':
+                return (
+                    <BackBtn />
+                )
         }
     }
 
@@ -58,6 +62,15 @@ const Header:FC<HeaderInterface> = ({InterfaceObj}) => {
                         <Nav className="me-auto">
                             <Nav.Link onClick={() => navigate('/datalore')}>База знаний</Nav.Link>
                             <Nav.Link onClick={() => navigate('/mytask')}>Мои задачи</Nav.Link>
+
+                            {localStorage.getItem('UserName') == 'Расторгуев Владислав Александрович'   ||
+                             localStorage.getItem('UserName') == 'Харитонов Дмитрий Игоревич'           ||
+                             
+                             localStorage.getItem('UserName') == 'Клыков Иван Юрьевич' ? (
+                                <Nav.Link onClick={() => navigate('/accessaa6')}>Доступы АА6</Nav.Link>
+                             ) : (
+                                null
+                             )}
                         </Nav>
                     </>
                 )

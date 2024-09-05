@@ -5,6 +5,7 @@ import Loginpage from '../page/Loginpage/Loginpage';
 import Datalore from '../page/Datalore/Datalore';
 import SoglPage from '../page/SoglPage/SoglPage';
 import MyTask from '../page/MyTask/MyTask';
+import AccessAA6Form from '../page/AccessAA6Form/AccessAA6Form';
 
 
 const MainRoutes = () => {
@@ -14,7 +15,7 @@ const MainRoutes = () => {
         {link: "/datalore", element: <Datalore />, id: 3},
         {link: "/sogl/:ok", element: <SoglPage />, id: 4},
         {link: "/mytask", element: <MyTask />, id: 5},
-        {link: "/", element: <Homepage />, id: 1},
+        {link: "/accessaa6", element: <AccessAA6Form />, id: 6},
     ];
 
     return(
