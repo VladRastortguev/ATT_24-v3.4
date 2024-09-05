@@ -1,0 +1,74 @@
+.VR_AccessTable_AccessAA6 {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.VR_AccessTable_AccessAA6 button {
+    margin-bottom: 20px;
+
+    background: 0;
+    
+    border: 1px solid black;
+    border-radius: 5px;
+
+    padding: 5px 20px;
+
+    font-family: 'Nunito', sans-serif;    
+}
+
+.VR_AccessTable_AccessAA6 button:hover {
+    cursor: pointer;
+
+    background-color: #000;
+    color: #fff;
+
+    transition: 0.5s ease-in-out;
+}
+
+table {
+    margin: 20px 0;
+
+    max-width: 70%;
+}
+
+table tr {
+    border: 1px solid #000;
+}
+
+table th {
+    border: 1px solid #000;
+
+    padding: 5px 10px;
+}
+
+table td {
+    text-align: center;
+    border: 1px solid #000;
+
+    padding: 5px 10px;
+}
+
+/* .VR_VerticalText_AccessAA6 th {
+    writing-mode: vertical-rl;
+} */
+
+.VR_CheckBox_AccessAA6 p {
+    margin: 0;
+    padding: 0;
+}
+
+.VR_CheckBox_AccessAA6 div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.VR_CheckBox_AccessAA6 input {
+    margin-left: 10px;
+}
+
+.VR_VerticalText_AccessAA6 span {
+    text-align: center;
+}
