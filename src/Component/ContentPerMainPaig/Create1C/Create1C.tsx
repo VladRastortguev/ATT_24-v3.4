@@ -678,14 +678,14 @@ const Create1C:FC= () => {
 
                         <TaskComment InterfaceObj={InterfaceObj}/>
 
-                        <Form.Group controlId="formFile" className="mb-3">
+                        {/* <Form.Group controlId="formFile" className="mb-3">
                             <Form.Label>Добавьте скриншот ошибки:</Form.Label>
                             <Form.Control 
                                 type="file"
                                 onChange={hadnleFileChange}
                                 // value={fileElement} 
                             />
-                        </Form.Group>
+                        </Form.Group> */}
 
                         {modalEmpty ? (
                             <div className='ModalEmpty_HeaderBlock'>
