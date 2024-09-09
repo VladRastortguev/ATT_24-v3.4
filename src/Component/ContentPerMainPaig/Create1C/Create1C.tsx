@@ -239,7 +239,8 @@ const Create1C:FC= () => {
                         <option value=""></option>
                         <option value="HR Директор">HR Директор</option>
                         <option value="HR специалист">HR специалист</option>
-                        <option value="Специалист по подбору персонала">Специалист по подбору персонала</option>                    
+                        <option value="Специалист по подбору персонала">Специалист по подбору персонала</option> 
+                        <option value="Тренер по продукту">Тренер по продукту</option>                   
                     </>
                 )
             case 'Контакт центр':
