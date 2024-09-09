@@ -292,6 +292,7 @@ const Create1C:FC= () => {
                         <option value="Специалист по детейлингу">                 Специалист по детейлингу</option>
                         <option value="Старший кладовщик">                        Старший кладовщик</option>
                         <option value="Технический директор">                     Технический директор</option>
+                        <option value="Специалист ППО"></option>
                     </>
                 )
             case 'Продажи':
