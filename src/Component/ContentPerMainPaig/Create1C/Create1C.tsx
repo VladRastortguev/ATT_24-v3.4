@@ -324,6 +324,111 @@ const Create1C:FC= () => {
                         <option value="Финансовый специалист">         Финансовый специалист</option>
                     </>
                 )
+            
+            case 'Toshtan auto':
+                return (
+                    <>
+                        <option value=""></option>
+                        <option value="Отдел АУП">Отдел АУП</option>
+                        <option value="Отдел продаж">Отдел продаж</option>
+                        <option value="Отдел СТО">Отдел СТО</option>
+                    </>
+                )
+
+            case 'BYD Kokand':
+                return (
+                    <>
+                        <option value=""></option>
+                        <option value="Отдел хозяйственной части">Отдел хозяйственной части</option>
+                        <option value="Отдел СТО">Отдел СТО</option>
+                        <option value="Отдел продаж авто">Отдел продаж авто</option>
+                        <option value="Отдел маркетинга">Отдел маркетинга</option>
+                        <option value="Отдел логистики">Отдел логистики</option>
+                        <option value="Отдел КСО">Отдел КСО</option>
+                        <option value="Отдел бухгалтерии">Отдел бухгалтерии</option>
+                        <option value="Отдел АУП">Отдел АУП</option>
+                        <option value="Отдел CR">Отдел CR</option>
+                    </>
+                )
+
+            case 'BYD Chigatoy':
+                return (
+                    <>
+                        <option value=""></option>
+                        <option value="Отдел продаж авто">Отдел продаж авто</option>
+                        <option value="Отдел СТО">Отдел СТО</option>
+                        <option value="Отдел хозяйственной части">Отдел хозяйственной части</option>
+                        <option value="Отдел CR">Отдел CR</option>
+                        <option value="Отдел HR">Отдел HR</option>
+                        <option value="Отдел бухгалтерии">Отдел бухгалтерии</option>
+                        <option value="Отдел маркетинга">Отдел маркетинга</option>
+                        <option value="Отдел АУП">Отдел АУП</option>
+                        <option value="Отдел КСО">Отдел КСО</option>
+                        <option value="Отдел логистики">Отдел логистики</option>
+                        <option value="Отдел ОЗЧ">Отдел ОЗЧ</option>
+                    </>
+                )
+
+            case 'BYD Chigatoy PMZ':
+                return (
+                    <>
+                        <option value=""></option>
+                        <option value="Отдел СТО">Отдел СТО</option>
+                        <option value="Отдел Бухгалтерии">Отдел Бухгалтерии</option>
+                    </>
+                )
+
+            case 'Toyota Tashkent':
+                return (
+                    <>
+                        <option value=""></option>
+                        <option value="Отдел TDS">Отдел TDS</option>
+                        <option value="Отдел маркетинга">Отдел маркетинга</option>
+                        <option value="Отдел хозяйственной части">Отдел хозяйственной части</option>
+                        <option value="Отдел продаж запасных частей">Отдел продаж запасных частей</option>
+                        <option value="Отдел юстиций">Отдел юстиций</option>
+                        <option value="Отдел СТО">Отдел СТО</option>
+                        <option value="Отдел продаж авто">Отдел продаж авто</option>
+                        <option value="Отдел кухня">Отдел кухня</option>
+                        <option value="Отдел бухгалтерии">Отдел бухгалтерии</option>
+                        <option value="Отдел CR">Отдел CR</option>
+                        <option value="Отдел АУП">Отдел АУП</option>
+                        <option value="Отдел HR">Отдел HR</option>
+                    </>
+                )
+            
+            case 'Toyota Samarqand':
+                return (
+                    <>
+                        <option value=""></option>
+                        <option value="Отдел CR">Отдел CR</option>
+                        <option value="Отдел АУП">Отдел АУП</option>
+                        <option value="Отдел продаж авто">Отдел продаж авто</option>
+                        <option value="Отдел хозяйственной части">Отдел хозяйственной части</option>
+                    </>
+                )
+        
+            case 'GEE KD':
+                return (
+                    <>
+                        <option value=""></option>
+                        <option value="Отдел АУП">Отдел АУП</option>
+                    </>
+                )
+            
+            case 'Gee Motors':
+                return (
+                    <>
+                        <option value=""></option>
+                        <option value="Отдел АУП">Отдел АУП</option>
+                        <option value="Отдел маркетинга">Отдел маркетинга</option>
+                        <option value="Отдел ППО">Отдел ППО</option>
+                        <option value="Отдел развития">Отдел развития</option>
+                        <option value="Отдел продаж">Отдел продаж</option>
+                        <option value="Отдел IT">Отдел IT</option>
+                        <option value="Финансовый отдел">Финансовый отдел</option>
+                    </>
+                )
         }
     }
 

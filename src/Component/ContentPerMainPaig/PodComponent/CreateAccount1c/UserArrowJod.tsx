@@ -22,6 +22,16 @@ const UserArrowJod:FC<CreaetAccount1cInterface> = ( { InterfaceObj } ) => {
                     <option value='ППО'>ППО</option>
                     <option value='Продажи'>Продажи</option>
                     <option value='Финансовый департамент'>Финансовый департамент</option>
+                    
+                    <option value="Toshtan auto">Toshtan auto</option>
+                    <option value="BYD Kokand">BYD Kokand</option>
+                    <option value="BYD Chigatoy">BYD Chigatoy</option>
+                    <option value="BYD Chigatoy PMZ">BYD Chigatoy PMZ</option>
+                    <option value="Toyota Tashkent">Toyota Tashkent</option>
+                    <option value="Toyota Samarqand">Toyota Samarqand</option>
+                    <option value="GEE KD">GEE KD</option>
+                    <option value="Gee Motors">Gee Motors</option>
+                    <option value="Oltin Tulpor Motors">Oltin Tulpor Motors</option>
                 </Form.Select>
             </Form.Group>
         </>
