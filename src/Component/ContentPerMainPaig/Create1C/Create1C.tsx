@@ -22,7 +22,6 @@ import UserJobtitelCreate1c from '../PodComponent/CreateAccount1c/UserJobtitelCr
 import UserArrowJod from '../PodComponent/CreateAccount1c/UserArrowJod'
 import ModalEmptyForm from '../../AlertModal/ModalEmptyForm/ModalEmptyForm'
 import ModalSucces from '../../AlertModal/ModalSuccess/ModalSucces'
-import { log } from 'console'
 import TaskPodInfluence from '../PodComponent/TaskPodInfluence'
 
 const Create1C:FC= () => {
@@ -82,7 +81,7 @@ const Create1C:FC= () => {
             try {
                 await store.checkAa6Success(String(localStorage.getItem('userEmail')))    
             } catch (e) {
-                console.log(e);                
+                alert(e);                
             } finally {
                 store.setLoading(false)
             }
@@ -429,6 +428,23 @@ const Create1C:FC= () => {
                         <option value="Финансовый отдел">Финансовый отдел</option>
                     </>
                 )
+
+            case 'Oltin Tulpor Motors':
+                return (
+                    <>
+                        <option value=""></option>
+                        <option value="HR Департамент">HR Департамент</option>
+                        <option value="Департамент внутренней безопасности">Департамент внутренней безопасности</option>
+                        <option value="Департамент дистрибуции">Департамент дистрибуции</option>
+                        <option value="Департамент IT">Департамент IT</option>
+                        <option value="Департамент по управлению производством">Департамент по управлению производством</option>
+                        <option value="Департамент строительства">Департамент строительства</option>
+                        <option value="Диллерский департамент">Диллерский департамент</option>
+                        <option value="Отдел АУП">Отдел АУП</option>
+                        <option value="Финансовый департамент">Финансовый департамент</option>
+                        <option value="Юридический департамент">Юридический департамент</option>
+                    </>
+                )
         }
     }
 
@@ -478,7 +494,24 @@ const Create1C:FC= () => {
     //     }
     // }
 
-    async function setNewTask() {
+    useEffect(() => {
+        if (fileElement) {
+            const reader = new FileReader()
+            
+            // reader.readAsDataURL(fileElement)
+            // reader.onloadend = () => {
+            //     const base64Str = reader.result?.toString().split(',')[1]
+            // }
+
+            reader.onload = () => {
+                setBase64File(reader.result as string)
+            }
+
+            reader.readAsDataURL(fileElement)
+        }
+    }, [fileElement])
+
+    async function setNewTask() {        
         if (
             !taskService.trim()        ||
             !taskName.trim()           ||            
@@ -514,27 +547,7 @@ const Create1C:FC= () => {
             return
         }
 
-        if (fileElement) {
-            const reader = new FileReader()
-            
-            reader.readAsDataURL(fileElement)
-            reader.onloadend = () => {
-                const base64Str = reader.result?.toString().split(',')[1]
-
-                console.log(base64Str);                
-
-                if (base64Str) {
-                    setBase64File(base64Str)
-                    console.log(base64File);                    
-                }
-
-                if (base64Str) {
-                    setBase64File(base64Str)
-                    console.log(base64File);                    
-                }
-            }
-
-        }
+        
 
         let taskObj = [
             {
@@ -569,18 +582,12 @@ const Create1C:FC= () => {
             taskObj[0].СрочностьПодробно = "Срочность задачи подробно: Создание новой учетки"
         }
 
-        console.log(taskObj);        
-
-        // console.log(taskObj);
-
         try {
             store.setLoading(true)
 
             const res = AuthService.setNewTask(taskObj, String(localStorage.getItem('userEmail')))
-
-            console.log(res);
         } catch (e) {
-            console.log(e);
+            alert(e);
         } finally {
             store.setLoading(false)
         }
@@ -606,8 +613,6 @@ const Create1C:FC= () => {
     }
 
     function checkAa6Success(option:string) {
-        console.log(store.aa6Success);        
-
         if (option == 'Создание учетной записи АА6' && !store.aa6Success ) {
             alert('Вы не можете поставить данную задачу! \nОбратитесь к руководителю');            
             setTaskService('')
@@ -785,14 +790,14 @@ const Create1C:FC= () => {
 
                         <TaskComment InterfaceObj={InterfaceObj}/>
 
-                        {/* <Form.Group controlId="formFile" className="mb-3">
+                        <Form.Group controlId="formFile" className="mb-3">
                             <Form.Label>Добавьте скриншот ошибки:</Form.Label>
                             <Form.Control 
                                 type="file"
                                 onChange={hadnleFileChange}
-                                // value={fileElement} 
+                                accept='image/*, .png'                        
                             />
-                        </Form.Group> */}
+                        </Form.Group>
 
                         {modalEmpty ? (
                             <div className='ModalEmpty_HeaderBlock'>

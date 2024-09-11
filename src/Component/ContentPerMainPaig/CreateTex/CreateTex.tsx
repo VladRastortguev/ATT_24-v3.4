@@ -30,6 +30,8 @@ const CreateTex:FC = () => {
     const [taskUrgencyDescr, setTaskUrgencyDescr] = useState('')
     const [taskComment, setTaskComment] = useState('')
     const [taskPodInfluence, setTaskPodInfluence] = useState('')
+    const [fileElement, setFileElement] = useState<File | null>(null)
+    const [base64File, setBase64File] = useState('')  
 
     const [feedback, setFeedback] = useState('')
 
@@ -141,67 +143,87 @@ const CreateTex:FC = () => {
         changeButtonSuccess: handleChangeButtonModalSuccess
     }
 
-
-  async function setNewTask() {
-    if (
-        !taskService.trim()        ||
-        !taskName.trim()           ||
-        !taskInfluence.trim()      ||
-        !taskInfluenceDescr.trim() ||
-        !taskUrgency.trim()        ||
-        !taskUrgencyDescr.trim()   ||
-        !taskComment.trim()        ||
-        !feedback.trim()
-    ) {
-        setModalEmpty(true)
-        return
+    const hadnleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.files) {        
+            setFileElement(event.target.files[0])       
+        }                
     }
 
-    let taskObj = [
-        {
-            ТипЗадачи             : "Задача Тех. Поддержке",
-            ПодтипЗадачи          : taskService,
-            Наименование          : taskName,
-            ИмяПользователя       : userName,
-            email                 : userEmail,
-            КомпанияЗаказчик      : taskOrganization,
-            ВлияниеЗадачи         : taskInfluence,
-            ВлияниеЗадачиПодробно : `Влияние задачи подробно: ${taskInfluenceDescr}`,
-            Срочность             : taskUrgency,
-            СрочностьПодробно     : `Срочность задачи подробно: ${taskUrgencyDescr}`,
-            Описание              : taskComment,
-            ОбратнаяСвязь         : feedback
+    useEffect(() => {                            
+        if (fileElement) {                       
+            const reader = new FileReader()
+            // reader.readAsDataURL(fileElement)
+            // reader.onloadend = () => {
+            //     const base64Str = reader.result?.toString().split(',')[1]
+            // }
+
+            reader.onload = () => {
+                setBase64File(reader.result as string)
+            }            
+
+            reader.readAsDataURL(fileElement)
+        }       
+    }, [fileElement])
+
+    async function setNewTask() {
+        if (
+            !taskService.trim()        ||
+            !taskName.trim()           ||
+            !taskInfluence.trim()      ||
+            !taskInfluenceDescr.trim() ||
+            !taskUrgency.trim()        ||
+            !taskUrgencyDescr.trim()   ||
+            !taskComment.trim()        ||
+            !feedback.trim()
+        ) {
+            setModalEmpty(true)
+            return
         }
-    ]    
 
-    store.setLoading(true)
+        let taskObj = [
+            {
+                ТипЗадачи             : "Задача Тех. Поддержке",
+                ПодтипЗадачи          : taskService,
+                Наименование          : taskName,
+                ИмяПользователя       : userName,
+                email                 : userEmail,
+                КомпанияЗаказчик      : taskOrganization,
+                ВлияниеЗадачи         : taskInfluence,
+                ВлияниеЗадачиПодробно : `Влияние задачи подробно: ${taskInfluenceDescr}`,
+                Срочность             : taskUrgency,
+                СрочностьПодробно     : `Срочность задачи подробно: ${taskUrgencyDescr}`,
+                Описание              : taskComment,
+                ОбратнаяСвязь         : feedback,
+                file                  : base64File,
+            }   
+        ]    
 
-    try {
-        const res = AuthService.setNewTask(taskObj, String(localStorage.getItem('userEmail')))
+        store.setLoading(true)
 
-        console.log(res);
-    } catch (e) {
-        console.log(e);
-    } finally {
-        store.setLoading(false)
+        try {
+            const res = AuthService.setNewTask(taskObj, String(localStorage.getItem('userEmail')))            
+        } catch (e) {
+            alert(e);
+        } finally {
+            store.setLoading(false)
+        }
+
+        setTaskType("")
+        setTaskService("")
+
+        handleSetTaskName("")
+        // handleSetUserName("")    
+        // handleSetUserEmail("") 
+        // handleSetTaskOrganization("") 
+        handleSetTaskInfluence("") 
+        handleSetTaskInfluenceDescr("")
+        handleSetTaskUrgency("") 
+        handleSetTaskUrgencyDescr("")
+        handleSetTaskComment("")
+        setFeedback("")
+
+        setModalSuccess(true)
     }
-
-    setTaskType("")
-    setTaskService("")
-
-    handleSetTaskName("")
-    // handleSetUserName("")    
-    // handleSetUserEmail("") 
-    // handleSetTaskOrganization("") 
-    handleSetTaskInfluence("") 
-    handleSetTaskInfluenceDescr("")
-    handleSetTaskUrgency("") 
-    handleSetTaskUrgencyDescr("")
-    handleSetTaskComment("")
-    setFeedback("")
-
-    setModalSuccess(true)
-  }
 
     function resetTaskType(tasktype:string) {
         switch (tasktype){
@@ -466,6 +488,15 @@ const CreateTex:FC = () => {
                         </Form.Group>
 
                         <TaskComment InterfaceObj={InterfaceObj}/>
+
+                        <Form.Group controlId="formFile" className="mb-3">
+                            <Form.Label>Добавьте скриншот ошибки:</Form.Label>
+                            <Form.Control 
+                                type="file"                        
+                                onChange={hadnleFileChange}
+                                accept='image/*, .png'                        
+                            />
+                        </Form.Group>
                     
                         {modalEmpty ? (
                             <div className='ModalEmpty_HeaderBlock'>
