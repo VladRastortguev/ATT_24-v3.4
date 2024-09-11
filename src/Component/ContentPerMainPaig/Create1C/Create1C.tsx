@@ -524,7 +524,8 @@ const Create1C:FC= () => {
         if (
             taskService == 'Создание учетной записи АА6' || 
             taskService == 'Создание учетной записи АА4' ||
-            taskService == 'Создание учетной записи ЗУП') {
+            taskService == 'Создание учетной записи ЗУП' ||
+            taskService == 'Создание учетной записи БПКР') {
 
                 if (
                 !userNameCreate1c.trim()     ||
@@ -613,7 +614,9 @@ const Create1C:FC= () => {
     }
 
     function checkAa6Success(option:string) {
-        if (option == 'Создание учетной записи АА6' && !store.aa6Success ) {
+        if (option == 'Создание учетной записи АА6' && !store.aa6Success ||
+            option == 'Создание учетной записи БПКР' && !store.aa6Success 
+         ) {
             alert('Вы не можете поставить данную задачу! \nОбратитесь к руководителю');            
             setTaskService('')
         } else {
@@ -654,6 +657,7 @@ const Create1C:FC= () => {
                                 <option value="Сброс/установка пароля 1С">Сброс/установка пароля 1С</option>
                                 <option value="Установка 1с">Установка 1с</option>                                
                                 <option value="Создание учетной записи АА6">Создание учетной записи АА6</option>
+                                <option value="Создание учетной записи БПКР">Создание учетной записи БПКР</option>
                                 
                                 {localStorage.getItem('company') == 'Алтын Тулпар' ? (
                                     <>
@@ -681,7 +685,8 @@ const Create1C:FC= () => {
 
                         {taskService == 'Создание учетной записи АА6' ||
                          taskService == 'Создание учетной записи АА4' ||
-                         taskService == 'Создание учетной записи ЗУП' ? (
+                         taskService == 'Создание учетной записи ЗУП' ||
+                         taskService == 'Создание учетной записи БПКР' ? (
                             null
                         ) : (
                             <>
@@ -763,7 +768,8 @@ const Create1C:FC= () => {
 
                         {taskService == 'Создание учетной записи АА6' ||
                          taskService == 'Создание учетной записи АА4'  ||
-                         taskService == 'Создание учетной записи ЗУП'  ? (
+                         taskService == 'Создание учетной записи ЗУП'  ||
+                         taskService == 'Создание учетной записи БПКР' ? (
                             <>
                                 <UserNameCreate1c InterfaceObj={InterfaceObjCreate1c} />
                                 <UserCompanyCreate1c InterfaceObj={InterfaceObjCreate1c}/>  
