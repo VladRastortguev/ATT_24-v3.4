@@ -12,6 +12,7 @@ export interface itilNewtaskModel {
         Срочность             : string;
         СрочностьПодробно     : string;
         Описание              : string;
+        file                  : string;
 
         ПользовательУчеткиАА6 : string;
         КомпанияУчеткиАА6     : string;
