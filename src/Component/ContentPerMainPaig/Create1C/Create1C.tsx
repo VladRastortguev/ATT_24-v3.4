@@ -176,16 +176,14 @@ const Create1C:FC= () => {
     const hadnleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {    
         if (event.target.files) {
 
-            // let fileName = event.target.files[0].name;
-            // let filePng = String(fileName).split('.')[1]
+            let fileName = event.target.files[0].name;
+            let filePng = String(fileName).split('.')[1]
             
-            // if (filePng !== 'png') {
-            //     alert('Выберите только файл с расширением "png"')  
-            //     event.target.value = ""              
-            //     return
-            // } 
-
-            // console.log(event.target.files[0].size);            
+            if (filePng !== 'png' || filePng !== '.xlsx' || filePng !== '.xls' || filePng !== '.pdf' || filePng !== '.docx') {
+                alert('Выберите только файл с расширениями "png", ".xlsx", ".xls", ".pdf", ".docx"')  
+                event.target.value = ""              
+                return
+            } 
 
             setFileElement(event.target.files[0])
         }
