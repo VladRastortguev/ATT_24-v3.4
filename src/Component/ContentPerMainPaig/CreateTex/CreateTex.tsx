@@ -500,7 +500,7 @@ const CreateTex:FC = () => {
                         <TaskComment InterfaceObj={InterfaceObj}/>
 
                         <Form.Group controlId="formFile" className="mb-3">
-                            <Form.Label>Добавьте скриншот ошибки:</Form.Label>
+                            <Form.Label>Добавьте скриншот ошибки (.png, .xlsx, .xls, .pdf, .docx):</Form.Label>
                             <Form.Control 
                                 type="file"                        
                                 onChange={hadnleFileChange}
