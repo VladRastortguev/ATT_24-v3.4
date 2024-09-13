@@ -147,9 +147,9 @@ const CreateTex:FC = () => {
         if (event.target.files) {        
 
             let fileName = event.target.files[0].name;
-            let filePng = String(fileName).split('.')[1]
+            let filePng:string = String(fileName).split('.')[1]
             
-            if (filePng !== 'png' || filePng !== '.xlsx' || filePng !== '.xls' || filePng !== '.pdf' || filePng !== '.docx') {
+            if (filePng !== 'png' && filePng !== 'xlsx' && filePng !== 'xls'&& filePng !== 'pdf' && filePng !== 'docx') {
                 alert('Выберите только файл с расширениями "png", ".xlsx", ".xls", ".pdf", ".docx"')  
                 event.target.value = ""              
                 return

@@ -179,8 +179,8 @@ const Create1C:FC= () => {
             let fileName = event.target.files[0].name;
             let filePng = String(fileName).split('.')[1]
             
-            if (filePng !== 'png' || filePng !== '.xlsx' || filePng !== '.xls' || filePng !== '.pdf' || filePng !== '.docx') {
-                alert('Выберите только файл с расширениями "png", ".xlsx", ".xls", ".pdf", ".docx"')  
+            if (filePng !== 'png' && filePng !== 'xlsx' && filePng !== 'xls' && filePng !== 'pdf' && filePng !== 'docx') {
+                alert('Выберите только файл с расширениями ".png", ".xlsx", ".xls", ".pdf", ".docx"')  
                 event.target.value = ""              
                 return
             } 
