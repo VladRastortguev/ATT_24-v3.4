@@ -145,6 +145,16 @@ const CreateTex:FC = () => {
 
     const hadnleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files) {        
+
+            let fileName = event.target.files[0].name;
+            let filePng = String(fileName).split('.')[1]
+            
+            if (filePng !== 'png' || filePng !== '.xlsx' || filePng !== '.xls' || filePng !== '.pdf' || filePng !== '.docx') {
+                alert('Выберите только файл с расширениями "png", ".xlsx", ".xls", ".pdf", ".docx"')  
+                event.target.value = ""              
+                return
+            } 
+
             setFileElement(event.target.files[0])       
         }                
     }
@@ -494,7 +504,7 @@ const CreateTex:FC = () => {
                             <Form.Control 
                                 type="file"                        
                                 onChange={hadnleFileChange}
-                                accept='image/*, .png'                        
+                                accept='.png, .xlsx, .xls, .pdf, .docx'                        
                             />
                         </Form.Group>
                     
