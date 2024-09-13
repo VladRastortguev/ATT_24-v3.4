@@ -173,8 +173,20 @@ const Create1C:FC= () => {
         setModalSuccess(newState)
     }
 
-    const hadnleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const hadnleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {    
         if (event.target.files) {
+
+            // let fileName = event.target.files[0].name;
+            // let filePng = String(fileName).split('.')[1]
+            
+            // if (filePng !== 'png') {
+            //     alert('Выберите только файл с расширением "png"')  
+            //     event.target.value = ""              
+            //     return
+            // } 
+
+            // console.log(event.target.files[0].size);            
+
             setFileElement(event.target.files[0])
         }
     }
@@ -507,7 +519,7 @@ const Create1C:FC= () => {
                 setBase64File(reader.result as string)
             }
 
-            reader.readAsDataURL(fileElement)
+            reader.readAsDataURL(fileElement)           
         }
     }, [fileElement])
 
@@ -548,7 +560,7 @@ const Create1C:FC= () => {
             return
         }
 
-        
+        console.log(base64File);        
 
         let taskObj = [
             {
@@ -801,7 +813,7 @@ const Create1C:FC= () => {
                             <Form.Control 
                                 type="file"
                                 onChange={hadnleFileChange}
-                                accept='image/*, .png'                        
+                                accept='.png, .xlsx, .xls, .pdf, .docx'                        
                             />
                         </Form.Group>
 
